@@ -1,13 +1,32 @@
-﻿
+﻿@using MVCKutuphanesi.Models.Entity
+@model List<TBLKATEGORI> 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Bootstrap Dersleri</h2>
+<br />
+<h3>KATEGORİLER</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>KATEGORİ ID</th>
+        <th>KATEGORİ ADI</th>
+        <th>SİL</th>
+        <th> GÜNCELLE</th>
 
-This side navigation is of full height (100%) and always shown.
 
-Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+    </tr>
+    @foreach (var ktg in Model)
+    {
+        <tr>
+            <td>@ktg.ID</td>
+            <td>@ktg.AD</td>
+            <td><a href="/Kategori/KategoriSil/@ktg.ID" class="btn btn-danger" style="font-size:10px"> SİL</a></td>
+            <td><a href="/Kategori/KategoriGetir/@ktg.ID" class="btn btn-success" style="font-size:10px"> GÜNCELLE</a></td>
+        </tr>
+    }
 
-Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+
+</table>
+
+<a href="/Kategori/KategoriEkle/" class="btn btn-primary"> Yeni Kategori Ekle </a>
