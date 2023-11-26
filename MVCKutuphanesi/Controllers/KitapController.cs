@@ -57,5 +57,34 @@ namespace MVCKutuphanesi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult KitapGetir(int id)
+        {
+            var ktp = db.TBLKITAP.Find(id);
+            List<SelectListItem> deger1 = (from i in db.TBLKATEGORI.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = i.AD,
+                                               Value = i.ID.ToString()
+                                           }).ToList();
+            ViewBag.dgr1 = deger1;
+            List<SelectListItem> deger2 = (from i in db.TBLYAZAR.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = i.AD + ' ' + i.SOYAD,
+                                               Value = i.ID.ToString()
+                                           }).ToList();
+            ViewBag.dgr2 = deger2;
+            return View("KitapGetir", ktp);
+        }
+        public ActionResult KitapGüncelle(TBLKITAP p)
+        {
+            var kitap = db.TBLKITAP.Find(p.ID);
+            kitap.AD = p.AD;
+            kitap.BASIMYILI= p.BASIMYILI;
+            kitap.DURUM = true;
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
