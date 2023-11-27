@@ -12,10 +12,15 @@ namespace MVCKutuphanesi.Controllers
     {
         // GET: Kitap
         DBKUTUPHANEEntities db = new DBKUTUPHANEEntities();
-        public ActionResult Index()
+        public ActionResult Index(string p) // p dışardan girilen değer
         {
-            var kitaplar = db.TBLKITAP.ToList();
-            return View(kitaplar);
+            var kitaplar = from k in db.TBLKITAP select k;
+            if (!string.IsNullOrEmpty(p))
+            {
+                kitaplar = kitaplar.Where(m => m.AD.Contains(p));
+            }
+            //var kitaplar = db.TBLKITAP.ToList();
+            return View(kitaplar.ToList());
         }
         [HttpGet]
         public ActionResult KitapEkle() // sayfa yüklendğinde içinde veriler olması için
@@ -81,10 +86,16 @@ namespace MVCKutuphanesi.Controllers
             var kitap = db.TBLKITAP.Find(p.ID);
             kitap.AD = p.AD;
             kitap.BASIMYILI= p.BASIMYILI;
-            kitap.DURUM = true;
-
-            db.SaveChanges();
+            kitap.YAYINEVI = p.YAYINEVI;
+            kitap.SAYFA = p.SAYFA;
+            var ktg = db.TBLKATEGORI.Where(k => k.ID==p.TBLKATEGORI.ID).FirstOrDefault();
+            var yzr = db.TBLYAZAR.Where(y => y.ID==p.TBLYAZAR.ID).FirstOrDefault();
+            kitap.KATEGORI = ktg.ID;
+            kitap.YAZAR = yzr.ID;
+           db.SaveChanges();
             return RedirectToAction("Index");
+
+           
         }
     }
 }
