@@ -11,10 +11,13 @@ namespace MVCKutuphanesi.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TBLPERSONEL
     {
         public byte ID { get; set; }
+
+        [Required(ErrorMessage = "Perosnel adý boþ geçilemez")]
         public string PERSONEL { get; set; }
     }
 }

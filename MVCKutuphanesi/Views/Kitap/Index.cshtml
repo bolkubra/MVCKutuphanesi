@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 <br />
-<h3>Kitap Sayfası</h3>
+<h3>KİTAPLAR</h3>
 
-@using (Html.BeginForm("Index", "Kitap", FormMethod.Get))
+@using (Html.BeginForm("Index", "Kitap", FormMethod.Get)) // aranan kitabı listeleme 
 {
     <div style="margin-bottom:15px; margin-top:15px;">
         <b>Aranacak Kitap Adını Giriniz...</b> @Html.TextBox("p")
