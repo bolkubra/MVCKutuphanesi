@@ -32,6 +32,6 @@ namespace MVCKutuphanesi.Models.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBLHAREKET> TBLHAREKET { get; set; }
         public virtual TBLKATEGORI TBLKATEGORI { get; set; }
-        public virtual TBLYAZAR TBLYAZAR { get; set; } //virtual iliþkilerin bulunduðu kýsým
+        public virtual TBLYAZAR TBLYAZAR { get; set; }
     }
 }

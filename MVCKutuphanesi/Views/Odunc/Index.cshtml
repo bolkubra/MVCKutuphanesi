@@ -1,0 +1,38 @@
+﻿@using MVCKutuphanesi.Models.Entity
+@model List<TBLHAREKET>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<br />
+<h3>ÖDÜNÇ ALINAN KİTAPLAR</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>İŞLEM ID</th>
+        <th>Kitap Adı</th>
+        <th>ÜYE</th>
+        <th>PERSONEL</th>
+        <th>ALIŞ TARİHİ</th>
+        <th>İADE TARİHİ</th>
+        <th>İADE</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.ID</td>
+            <td>@k.TBLKITAP.AD</td>
+            <td>@k.TBLUYE.AD&nbsp; @k.TBLUYE.SOYAD</td>
+            <td>@k.TBLPERSONEL.PERSONEL</td>
+            <td>@Convert.ToDateTime( k.ALISTARIHI).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime( k.IADETARIHI).ToString("dd/MM/yyyy")</td>
+            <td><a href="/Odunc/Odunciade/@k.ID" class="btn btn-success" style="font-size:10px"> KİTABI İADE ET </a></td>
+
+        </tr>
+    }
+</table>
+
+<a href="/Kitap/KitapEkle/" class="btn btn-primary"> Yeni Kitap Ekle </a>
+
+
