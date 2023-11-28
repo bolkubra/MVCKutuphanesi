@@ -36,6 +36,8 @@
           <Property Name="PERSONEL" Type="tinyint" />
           <Property Name="ALISTARIHI" Type="smalldatetime" />
           <Property Name="IADETARIHI" Type="smalldatetime" />
+          <Property Name="UYEGETIRTARIH" Type="smalldatetime" />
+          <Property Name="ISLEMDURUM" Type="bit" />
         </EntityType>
         <EntityType Name="TBLKASA">
           <Key>
@@ -259,6 +261,8 @@
           <NavigationProperty Name="TBLKITAP" Relationship="Self.FK_TBLHAREKET_TBLKITAP" FromRole="TBLHAREKET" ToRole="TBLKITAP" />
           <NavigationProperty Name="TBLUYE" Relationship="Self.FK_TBLHAREKET_TBLUYE" FromRole="TBLHAREKET" ToRole="TBLUYE" />
           <NavigationProperty Name="TBLPERSONEL" Relationship="DBKUTUPHANEModel.FK_TBLHAREKET_TBLPERSONEL" FromRole="TBLHAREKET" ToRole="TBLPERSONEL" />
+          <Property Name="ISLEMDURUM" Type="Boolean" />
+          <Property Name="UYEGETIRTARIH" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="TBLKASA">
           <Key>
@@ -481,6 +485,8 @@
           <EntitySetMapping Name="TBLHAREKET">
             <EntityTypeMapping TypeName="DBKUTUPHANEModel.TBLHAREKET">
               <MappingFragment StoreEntitySet="TBLHAREKET">
+                <ScalarProperty Name="UYEGETIRTARIH" ColumnName="UYEGETIRTARIH" />
+                <ScalarProperty Name="ISLEMDURUM" ColumnName="ISLEMDURUM" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="KITAP" ColumnName="KITAP" />
                 <ScalarProperty Name="UYE" ColumnName="UYE" />

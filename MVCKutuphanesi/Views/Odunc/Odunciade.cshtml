@@ -1,0 +1,38 @@
+﻿@model MVCKutuphanesi.Models.Entity.TBLHAREKET
+@{
+    ViewBag.Title = "Odunciade";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("OduncGuncelle", "Odunc", FormMethod.Post))
+{
+    <br />
+    <div class="form-group">
+        <label>Hareket ID</label>
+        @Html.TextBoxFor(p => p.ID, new { @class = "form-control" })
+
+        <label>Kitap Adı</label>
+        @Html.TextBoxFor(p => p.TBLKITAP.AD, new { @class = "form-control" })
+
+        <label>Üye Adı</label>
+        @Html.TextBoxFor(p => p.TBLUYE.AD, new { @class = "form-control" })
+
+        <label>Personel</label>
+        @Html.TextBoxFor(p => p.TBLPERSONEL.PERSONEL, new { @class = "form-control" })
+
+        <label>Alış Tarihi</label>
+        @Html.TextBoxFor(p => p.ALISTARIHI, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+
+        <label>İade Tarihi</label>
+        @Html.TextBoxFor(p => p.IADETARIHI, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+
+        <label>Üyenin Getirdiği Tarih</label>
+        <input type="text" class="form-control" name="UYEGETIRTARIH" value="@DateTime.Now.ToShortDateString()" />
+
+
+    </div>
+    <br />
+    <div>
+        <button class="btn btn-warning">Ödünç Kitabı Geri Al</button>
+    </div>
+}
