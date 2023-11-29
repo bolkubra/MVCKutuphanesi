@@ -32,6 +32,7 @@ namespace MVCKutuphanesi.Controllers
         {
             var odn = db.TBLHAREKET.Find(id);
             return View("Odunciade", odn);
+
         }
         public ActionResult OduncGuncelle(TBLHAREKET p)
         {

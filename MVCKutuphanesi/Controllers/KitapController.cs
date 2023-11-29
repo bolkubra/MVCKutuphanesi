@@ -88,12 +88,13 @@ namespace MVCKutuphanesi.Controllers
             kitap.BASIMYILI= p.BASIMYILI;
             kitap.YAYINEVI = p.YAYINEVI;
             kitap.SAYFA = p.SAYFA;
+
             kitap.DURUM = true;
             var ktg = db.TBLKATEGORI.Where(k => k.ID==p.TBLKATEGORI.ID).FirstOrDefault();
             var yzr = db.TBLYAZAR.Where(y => y.ID==p.TBLYAZAR.ID).FirstOrDefault();
             kitap.KATEGORI = ktg.ID;
             kitap.YAZAR = yzr.ID;
-           db.SaveChanges();
+            db.SaveChanges();
             return RedirectToAction("Index");
 
            
