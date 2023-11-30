@@ -34,5 +34,7 @@ namespace MVCKutuphanesi.Models.Entity
         public virtual DbSet<TBLPERSONEL> TBLPERSONEL { get; set; }
         public virtual DbSet<TBLUYE> TBLUYE { get; set; }
         public virtual DbSet<TBLYAZAR> TBLYAZAR { get; set; }
+        public virtual DbSet<TBLHAKKIMIZDA> TBLHAKKIMIZDA { get; set; }
+        public virtual DbSet<TBLILETISIM> TBLILETISIM { get; set; }
     }
 }
