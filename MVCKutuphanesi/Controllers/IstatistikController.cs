@@ -13,5 +13,9 @@ namespace MVCKutuphanesi.Controllers
         {
             return View();
         }
+        public ActionResult Hava()
+        {
+            return View();
+        }
     }
 }

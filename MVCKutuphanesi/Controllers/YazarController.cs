@@ -24,6 +24,10 @@ namespace MVCKutuphanesi.Controllers
         [HttpPost]
         public ActionResult YazarEkle(TBLYAZAR p)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("YazarEkle");
+            }
             db.TBLYAZAR.Add(p);
             db.SaveChanges();
             return View();
