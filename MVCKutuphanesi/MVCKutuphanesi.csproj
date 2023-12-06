@@ -425,6 +425,7 @@
     <Content Include="Views\Istatistik\Hava.cshtml" />
     <Content Include="Views\Istatistik\HavaKart.cshtml" />
     <Content Include="Views\Istatistik\Galeri.cshtml" />
+    <Content Include="Views\Istatistik\LinqKart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
