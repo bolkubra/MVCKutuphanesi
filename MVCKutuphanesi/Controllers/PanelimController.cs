@@ -34,5 +34,12 @@ namespace MVCKutuphanesi.Controllers
             db.SaveChanges();
             return View();
         }
+        public ActionResult Kitaplar()
+        {
+            var kullanici = (string)Session["Email"];
+            var id = db.TBLUYE.Where(x => x.EMAIL == kullanici.ToString()).Select(z => z.ID).FirstOrDefault();
+            var degerler = db.TBLHAREKET.Where(x => x.UYE == id).ToList();
+            return View(degerler);
+        }
     }
 }

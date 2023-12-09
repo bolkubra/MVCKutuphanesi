@@ -1,0 +1,30 @@
+﻿@model MVCKutuphanesi.Models.Entity.TBLMESAJLAR
+@{
+    ViewBag.Title = "YeniMesaj";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+<br />
+<h2>YeniMesaj</h2>
+
+<form class="form-group" method="post">
+    <br />
+    <div>
+        <label>Alıcı Mail</label>
+        @Html.TextBoxFor(x => x.ALICI, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Konu</label>
+        @Html.TextBoxFor(x => x.KONU, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>İçerik</label>
+        @Html.TextAreaFor(x => x.ICERIK, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info" id="btn1">Mesaj Gönder</button>
+
+    </div>
+
+</form>
+
