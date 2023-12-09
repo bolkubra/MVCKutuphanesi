@@ -14,6 +14,8 @@
         <th> DETAY </th>
         <th> SİL </th>
         <th> GÜNCELLE </th>
+        <th> YAZARIN KİTAPLARI </th>
+
     </tr>
     @foreach (var y in Model) {
         <tr>
@@ -23,6 +25,7 @@
             <td>@y.DETAY</td>
             <td>@Html.ActionLink("SİL", "YazarSil", new { id = y.ID }, new { @class = "btn btn-danger", onclick = "return confirm ('Silmek İstiyor musun?')", style = "font-size: 10px;" })</td>
             <td><a href="/Yazar/YazarGetir/@y.ID" class="btn btn-success" style="font-size:10px"> GÜNCELLE</a></td>
+            <td><a href="/Yazar/YazarKitaplar/@y.ID" class="btn btn-success" style="font-size:10px"> DETAY </a></td>
         </tr>
     }
 </table>

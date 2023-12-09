@@ -54,5 +54,12 @@ namespace MVCKutuphanesi.Controllers
             return RedirectToAction("Index");
 
         }
+        public ActionResult YazarKitaplar (int id)
+        {
+            var yazar = db.TBLKITAP.Where(x => x.YAZAR == id).ToList();
+            var yzrad = db.TBLYAZAR.Where(y => y.ID == id).Select(z => z.AD + " " + z.SOYAD).FirstOrDefault();
+            ViewBag.y1 = yzrad;
+            return View(yazar);
+        }
     }
 }

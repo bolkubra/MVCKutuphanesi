@@ -64,5 +64,12 @@ namespace MVCKutuphanesi.Controllers
             return RedirectToAction("Index");
 
         }
+        public ActionResult UyeKitapGecmis(int id)
+        {
+            var ktpgecmis = db.TBLHAREKET.Where(x => x.UYE == id).ToList();
+            var uyekit = db.TBLUYE.Where(y => y.ID == id).Select(z => z.AD + " " + z.SOYAD).FirstOrDefault();
+            ViewBag.k1 = uyekit;
+            return View(ktpgecmis);
+        }
     }
 }
