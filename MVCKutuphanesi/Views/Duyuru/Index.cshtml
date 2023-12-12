@@ -1,0 +1,36 @@
+﻿@using MVCKutuphanesi.Models.Entity
+@model List<TBLDUYURULAR>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<br />
+<h3>DUYURULAR</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>DUYURU NO</th>
+        <th>KATEGORİ</th>
+        <th>İÇERİK</th>
+        <th>TARİH</th>
+        <th>SİL</th>
+    
+
+
+    </tr>
+    @foreach (var dyr in Model)
+    {
+        <tr>
+            <td>@dyr.ID</td>
+            <td>@dyr.KATEGORI</td>
+            <td><a href="/Duyuru/DuyuruDetay/@dyr.ID" class="btn btn-warning" style="font-size:10px"> İÇERİK</a></td>
+            <td>@Convert.ToDateTime(dyr.TARIH).ToString("dd/MM/yyyy")</td>
+            <td><a href="/Duyuru/DuyuruSil/@dyr.ID" class="btn btn-danger" style="font-size:10px"> SİL</a></td>
+
+
+        </tr>
+    }
+
+
+</table>
+<a href="/Duyuru/YeniDuyuru/" class="btn btn-primary"> Yeni Duyuru Ekle </a>

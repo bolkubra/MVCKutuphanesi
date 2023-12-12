@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MVCKutuphanesi.Controllers
 {
@@ -29,7 +30,7 @@ namespace MVCKutuphanesi.Controllers
             uye.SOYAD = t.SOYAD;
             uye.KULLANICIADI = t.KULLANICIADI;
             uye.FOTOGRAF = t.FOTOGRAF;
-            uye.OKUL=t.OKUL;
+            uye.OKUL = t.OKUL;
             uye.TELEFON = t.TELEFON;
             db.SaveChanges();
             return View();
@@ -40,6 +41,16 @@ namespace MVCKutuphanesi.Controllers
             var id = db.TBLUYE.Where(x => x.EMAIL == kullanici.ToString()).Select(z => z.ID).FirstOrDefault();
             var degerler = db.TBLHAREKET.Where(x => x.UYE == id).ToList();
             return View(degerler);
+        }
+        public ActionResult Duyurular()
+        {
+            var duyurulist = db.TBLDUYURULAR.ToList();
+            return View(duyurulist);
+        }
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("GirisYap", "Login");
         }
     }
 }

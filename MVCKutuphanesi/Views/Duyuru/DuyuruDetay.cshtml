@@ -1,0 +1,27 @@
+﻿@model MVCKutuphanesi.Models.Entity.TBLDUYURULAR
+@{
+    ViewBag.Title = "DuyuruDetay";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("DuyuruGuncelle", "Duyuru", FormMethod.Post))
+{
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(p => p.ID)
+        @Html.TextBoxFor(p => p.ID, new { @class = "form-control" })
+
+        @Html.LabelFor(p => p.KATEGORI)
+        @Html.TextBoxFor(p => p.KATEGORI, new { @class = "form-control" })
+
+        @Html.LabelFor(p => p.ICERIK)
+        @Html.TextAreaFor(p => p.ICERIK, new { @class = "form-control" })
+
+        @Html.LabelFor(p => p.TARIH)
+        @Html.TextBoxFor(p => p.TARIH, new { @class = "form-control" })
+    </div>
+    <br />
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}
