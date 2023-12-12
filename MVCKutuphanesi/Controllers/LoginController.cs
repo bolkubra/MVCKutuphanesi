@@ -8,6 +8,7 @@ using MVCKutuphanesi.Models.Entity;
 
 namespace MVCKutuphanesi.Controllers
 {
+    [AllowAnonymous] // olmazsa hiç bir sayfaya erişim sağlanmaz
     public class LoginController : Controller
     {
         DBKUTUPHANEEntities db = new DBKUTUPHANEEntities();

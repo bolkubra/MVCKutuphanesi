@@ -8,11 +8,12 @@ using System.Web.Security;
 
 namespace MVCKutuphanesi.Controllers
 {
+    [Authorize]
     public class PanelimController : Controller
     {
         // GET: Panelim
         DBKUTUPHANEEntities db = new DBKUTUPHANEEntities();
-        [Authorize]
+       
         [HttpGet]
         public ActionResult Index()
         {
@@ -42,6 +43,7 @@ namespace MVCKutuphanesi.Controllers
             var degerler = db.TBLHAREKET.Where(x => x.UYE == id).ToList();
             return View(degerler);
         }
+        
         public ActionResult Duyurular()
         {
             var duyurulist = db.TBLDUYURULAR.ToList();
