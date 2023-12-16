@@ -34,5 +34,28 @@ namespace MVCKutuphanesi.Controllers
             db.SaveChanges();
             return RedirectToAction("Index2");
         }
+        public ActionResult AdminSil(int id)
+        {
+            var admn = db.TBLADMIN.Find(id);
+            db.TBLADMIN.Remove(admn);
+            db.SaveChanges();
+            return RedirectToAction("Index2");
+        }
+        [HttpGet]
+        public ActionResult AdminGuncelle(int id)
+        {
+            var admn = db.TBLADMIN.Find(id);
+            return View("AdminGuncelle" , admn);
+        }
+        [HttpPost]
+        public ActionResult AdminGuncelle(TBLADMIN a)
+        {
+            var admn = db.TBLADMIN.Find(a.ID);
+            admn.KULLANICIADI = a.KULLANICIADI;
+            admn.SIFRE = a.SIFRE;
+            admn.YETKI = a.YETKI;
+            db.SaveChanges();
+            return RedirectToAction("Index2");
+        }
     }
 }
