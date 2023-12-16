@@ -26,9 +26,10 @@ namespace MVCKutuphanesi.Controllers
         [HttpPost]
         public ActionResult KategoriEkle(TBLKATEGORI p)
         {
+            p.DURUM = true; // Yeni kategorinin durumunu true olarak ayarla
             db.TBLKATEGORI.Add(p);
             db.SaveChanges(); // değişiklikleri kaydet
-            return View();
+            return RedirectToAction("Index");
         }
         public ActionResult KategoriSil(int id)
         {

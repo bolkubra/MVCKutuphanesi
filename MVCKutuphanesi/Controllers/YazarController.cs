@@ -30,7 +30,7 @@ namespace MVCKutuphanesi.Controllers
             }
             db.TBLYAZAR.Add(p);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
         public ActionResult YazarSil(int id)
         {

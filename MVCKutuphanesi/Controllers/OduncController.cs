@@ -11,7 +11,7 @@ namespace MVCKutuphanesi.Controllers
     {
         // GET: Odunc
         DBKUTUPHANEEntities db = new DBKUTUPHANEEntities();
-        [Authorize(Roles = "A")]
+        //[Authorize(Roles = "A")]
         public ActionResult Index()
         {
             var degerler = db.TBLHAREKET.Where(x => x.ISLEMDURUM == false).ToList();

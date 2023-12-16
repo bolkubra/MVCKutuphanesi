@@ -4,49 +4,54 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-<br />
-<h3>KİTAPLAR</h3>
 
-@using (Html.BeginForm("Index", "Kitap", FormMethod.Get)) // aranan kitabı listeleme 
-{
-    <div style="margin-bottom:15px; margin-top:15px;">
-        <b>Aranacak Kitap Adını Giriniz...</b> @Html.TextBox("p")
-        <input  type="submit" value="Ara"/>
-    </div>
-}
+<div class="container mt-3">
+    <h3>KİTAPLAR</h3>
 
-
-
-<table class="table table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Kitap Adı</th>
-        <th>Kitap Yazarı</th>
-        <th>Kategorisi</th>
-        <th>Basım Yılı</th>
-        <th>Yayınevi</th>
-        <th>Sayfa</th>
-        <th>Durum</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-    </tr>
-    @foreach (var k in Model)
+    @using (Html.BeginForm("Index", "Kitap", FormMethod.Get, new { @class = "form-inline" }))
     {
-        <tr>
-            <td>@k.ID</td>
-            <td>@k.AD</td>
-            <td>@k.TBLYAZAR.AD&nbsp; @k.TBLYAZAR.SOYAD</td>
-            <td>@k.TBLKATEGORI.AD</td>
-            <td>@k.BASIMYILI</td>
-            <td>@k.YAYINEVI</td>
-            <td>@k.SAYFA</td>
-            <td>@k.DURUM</td>
-            <td><a href="/Kitap/KitapSil/@k.ID" class="btn btn-danger" style="font-size:10px"> SİL</a></td>
-            <td><a href="/Kitap/KitapGetir/@k.ID" class="btn btn-success" style="font-size:10px"> GÜNCELLE</a></td>
-
-        </tr>
+        <div class="form-group mb-2">
+            @Html.TextBox("p", null, new { @class = "form-control", placeholder = "Kitap Ara..." })
+            
+        </div>
+        
     }
-</table>
 
-<a href="/Kitap/KitapEkle/" class="btn btn-primary"> Yeni Kitap Ekle </a>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Kitap Adı</th>
+                <th>Kitap Yazarı</th>
+                <th>Kategorisi</th>
+                <th>Basım Yılı</th>
+                <th>Yayınevi</th>
+                <th>Sayfa</th>
+                <th>Durum</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var k in Model)
+            {
+                <tr>
+                    <td>@k.ID</td>
+                    <td>@k.AD</td>
+                    <td>@($"{k.TBLYAZAR.AD} {k.TBLYAZAR.SOYAD}")</td>
+                    <td>@k.TBLKATEGORI.AD</td>
+                    <td>@k.BASIMYILI</td>
+                    <td>@k.YAYINEVI</td>
+                    <td>@k.SAYFA</td>
+                    <td>@k.DURUM</td>
+                    <td><a href="@Url.Action("KitapSil", "Kitap", new { id = k.ID })" class="btn btn-danger btn-sm">SİL</a></td>
+                    <td><a href="@Url.Action("KitapGetir", "Kitap", new { id = k.ID })" class="btn btn-success btn-sm">GÜNCELLE</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="@Url.Action("KitapEkle", "Kitap")" class="btn btn-primary">Yeni Kitap Ekle</a>
+</div>
+
 

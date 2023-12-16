@@ -17,7 +17,7 @@ namespace MVCKutuphanesi.Controllers
         public ActionResult Index(int sayfa=1)
         {
             //var degerler = db.TBLUYE.ToList();
-            var degerler = db.TBLUYE.ToList().ToPagedList(sayfa, 3);
+            var degerler = db.TBLUYE.ToList().ToPagedList(sayfa, 5);
             return View(degerler);
         }
         [HttpGet]

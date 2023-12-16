@@ -31,7 +31,7 @@ namespace MVCKutuphanesi.Controllers
             }
             db.TBLPERSONEL.Add(p);
             db.SaveChanges(); 
-            return View();
+            return View("PersonelEkle");
         }
         public ActionResult PersonelSil(int id)
         {

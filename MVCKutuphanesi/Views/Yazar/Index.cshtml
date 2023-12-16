@@ -4,30 +4,43 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-<br />
-<h3>YAZARLAR</h3>
-<table class="table table-striped">
-    <tr style="background-color:#b46fb5">
-        <th> ID </th>
-        <th> AD </th>
-        <th> SOYAD </th>
-        <th> DETAY </th>
-        <th> SİL </th>
-        <th> GÜNCELLE </th>
-        <th> YAZARIN KİTAPLARI </th>
 
-    </tr>
-    @foreach (var y in Model) {
-        <tr>
-            <td>@y.ID</td>
-            <td>@y.AD</td>
-            <td>@y.SOYAD</td>
-            <td>@y.DETAY</td>
-            <td>@Html.ActionLink("SİL", "YazarSil", new { id = y.ID }, new { @class = "btn btn-danger", onclick = "return confirm ('Silmek İstiyor musun?')", style = "font-size: 10px;" })</td>
-            <td><a href="/Yazar/YazarGetir/@y.ID" class="btn btn-success" style="font-size:10px"> GÜNCELLE</a></td>
-            <td><a href="/Yazar/YazarKitaplar/@y.ID" class="btn btn-success" style="font-size:10px"> DETAY </a></td>
-        </tr>
-    }
-</table>
+<div class="container mt-3">
+    <h3>YAZARLAR</h3>
 
-<a href="/Yazar/YazarEkle" class="btn btn-primary"> Yeni Yazar Ekle </a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>AD</th>
+                <th>SOYAD</th>
+                <th>DETAY</th>
+                <th>SİL</th>
+                <th>GÜNCELLE</th>
+                <th>İNCELE</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var y in Model)
+            {
+                <tr>
+                    <td>@y.ID</td>
+                    <td>@y.AD</td>
+                    <td>@y.SOYAD</td>
+                    <td>@y.DETAY</td>
+                    <td>
+                        <a href="/Yazar/YazarSil/@y.ID" class="btn btn-danger btn-sm" onclick="return confirm('Silmek İstiyor musun?')">SİL</a>
+                    </td>
+                    <td>
+                        <a href="/Yazar/YazarGetir/@y.ID" class="btn btn-success btn-sm">GÜNCELLE</a>
+                    </td>
+                    <td>
+                        <a href="/Yazar/YazarKitaplar/@y.ID" class="btn btn-success btn-sm">DETAY</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Yazar/YazarEkle" class="btn btn-primary">Yeni Yazar Ekle</a>
+</div>
