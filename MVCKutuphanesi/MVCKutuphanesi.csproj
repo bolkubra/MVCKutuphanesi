@@ -2587,6 +2587,7 @@
     <Content Include="Views\Ayarlar\Index.cshtml" />
     <Content Include="Views\Ayarlar\Index2.cshtml" />
     <Content Include="Views\Ayarlar\AdminGuncelle.cshtml" />
+    <Content Include="Views\Panelim\Partial1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

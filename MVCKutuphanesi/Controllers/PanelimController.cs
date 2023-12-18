@@ -19,6 +19,21 @@ namespace MVCKutuphanesi.Controllers
         {
             var uyemail = (string)Session["Email"];
             var degerler = db.TBLUYE.FirstOrDefault(z => z.EMAIL == uyemail);
+            var d1 = db.TBLUYE.Where(x => x.EMAIL == uyemail).Select(y => y.AD).FirstOrDefault();
+            ViewBag.d1 = d1;
+            var d2 = db.TBLUYE.Where(x => x.EMAIL == uyemail).Select(y => y.SOYAD).FirstOrDefault();
+            ViewBag.d2 = d2;
+            var d3 = db.TBLUYE.Where(x => x.EMAIL == uyemail).Select(y => y.FOTOGRAF).FirstOrDefault();
+            ViewBag.d3 = d3;
+            var d4 = db.TBLUYE.Where(x => x.EMAIL == uyemail).Select(y => y.KULLANICIADI).FirstOrDefault();
+            ViewBag.d4 = d4;
+            var d5 = db.TBLUYE.Where(x => x.EMAIL == uyemail).Select(y => y.OKUL).FirstOrDefault();
+            ViewBag.d5 = d5;
+            var d6 = db.TBLUYE.Where(x => x.EMAIL == uyemail).Select(y => y.TELEFON).FirstOrDefault();
+            ViewBag.d6 = d6;
+            var uyeid = db.TBLUYE.Where(x => x.EMAIL == uyemail).Select(y => y.ID).FirstOrDefault();
+            var d7 = db.TBLHAREKET.Where(x => x.UYE == uyeid).Count();
+            ViewBag.d7 = d7;
             return View(degerler);
         }
         [HttpPost]
@@ -53,6 +68,10 @@ namespace MVCKutuphanesi.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("GirisYap", "Login");
+        }
+        public PartialViewResult Partial1() // parçalı wiew oluşturma
+        {
+            return PartialView();
         }
     }
 }
