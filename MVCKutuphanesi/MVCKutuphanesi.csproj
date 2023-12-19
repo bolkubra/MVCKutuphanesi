@@ -2090,6 +2090,7 @@
     <Content Include="startbootstrap-simple-sidebar-gh-pages\css\styles.css" />
     <Content Include="startbootstrap-simple-sidebar-gh-pages\index.html" />
     <Content Include="startbootstrap-simple-sidebar-gh-pages\js\scripts.js" />
+    <Content Include="Views\Login\image\kutuphane.jpg" />
     <Content Include="web2\css\bootstrap.css" />
     <Content Include="web2\css\clndr.css" />
     <Content Include="web2\css\jqvmap.css" />
