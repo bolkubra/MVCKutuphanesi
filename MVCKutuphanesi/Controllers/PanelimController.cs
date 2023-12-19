@@ -18,7 +18,8 @@ namespace MVCKutuphanesi.Controllers
         public ActionResult Index()
         {
             var uyemail = (string)Session["Email"];
-            var degerler = db.TBLUYE.FirstOrDefault(z => z.EMAIL == uyemail);
+            //var degerler = db.TBLUYE.FirstOrDefault(z => z.EMAIL == uyemail);
+            var degerler = db.TBLDUYURULAR.ToList();
             var d1 = db.TBLUYE.Where(x => x.EMAIL == uyemail).Select(y => y.AD).FirstOrDefault();
             ViewBag.d1 = d1;
             var d2 = db.TBLUYE.Where(x => x.EMAIL == uyemail).Select(y => y.SOYAD).FirstOrDefault();
@@ -72,6 +73,13 @@ namespace MVCKutuphanesi.Controllers
         public PartialViewResult Partial1() // parçalı wiew oluşturma
         {
             return PartialView();
+        }
+        public PartialViewResult Partial2() // parçalı wiew oluşturma
+        {
+            var kullanici = (string)Session["Email"];
+            var id = db.TBLUYE.Where(x => x.EMAIL == kullanici).Select(y => y.ID).FirstOrDefault();
+            var uyebul = db.TBLUYE.Find(id);
+            return PartialView("Partial2",uyebul);
         }
     }
 }
